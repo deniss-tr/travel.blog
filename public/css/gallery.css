@@ -1,0 +1,31 @@
+.gallery-card {
+    font-family: 'ArialMT', sans-serif;
+    height: 350px;
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    border: solid 5px #f6f6f6;
+    margin-bottom: 35px;
+    transition: filter 8s;
+    object-fit: cover;
+    background: #fff;
+}
+.gallery-img {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+}
+.card-img-title {
+    margin: auto;
+}
+@media (max-width: 420px) {
+    .gallery-card {
+        height: 300px;
+        width: 300px;
+    }
+    .gallery-img {
+        height: 270px;
+
+    }
+}

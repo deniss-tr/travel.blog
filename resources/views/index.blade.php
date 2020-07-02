@@ -1,0 +1,233 @@
+@extends('layouts.app')
+
+@section('title', 'Travel Blog')
+
+
+
+@section('content')
+        <div class="gallery mr35">
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header__title">
+                            <h6>Awesome Day</h6>
+                            <p>View from above</p>
+                        </div>
+                        <div class="card-header__date">
+                            <p>JAN</p>
+                            <p>25th</p>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href=''>
+                            <div class="card-footer__social">
+                                <span><i class="fas fa-heart"></i></span><span>37</span>
+                                <span><i class="fas fa-comments"></i></span><span>15</span>
+                            </div>
+                        </a>
+                        <div class="card-footer__openimg">
+                            <a href="images/1.jpg" data-lightbox="images" data-title="Title text text"><i class="fas fa-expand-arrows-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="background-image: 'images/1.jpg'">
+                    <div class="card-header">
+                        <div class="card-header__title">
+                            <h6>New picture</h6>
+                            <p>View from above</p>
+                        </div>
+                        <div class="card-header__date">
+                            <p>JAN</p>
+                            <p>25th</p>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href=''>
+                            <div class="card-footer__social">
+                                <span><i class="fas fa-heart"></i></span><span>37</span>
+                                <span><i class="fas fa-comments"></i></span><span>15</span>
+                            </div>
+                        </a>
+                        <div class="card-footer__openimg">
+                            <a href="images/11.jpg" data-lightbox="images" data-title="Title text text"><i class="fas fa-expand-arrows-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card">3</div>
+                <div class="card">4</div>
+                <div class="card">5</div>
+                <div class="card">6</div>
+                <div class="card">7</div>
+                <div class="card">8</div>
+        </div>
+
+        <div class="about-me mr35">
+            <div class="about-me__content">
+                <h3 class="title">A Picture Is Worth A Thousand Words</h3>
+                <p>People peter griffin high school mom bra just avenger le me students friend- zoned challenge accepted. True Story face troll finals derpina cereal guy lose back final week yao male. Not bad luke feel like a sir bacon pizza coffee a the avengers puking rainbows nyan cat search.</p>
+                <a class="btn" href="">Learn More About Us</a>
+            </div>
+		</div>
+
+        <main class="mr35">
+            <article>
+
+                <div class="article">
+                    <div class="article-header">
+                        <p>A Picture Is Worth A Thousand Words</p>
+						<p class="article-date">01/17/2014</p>
+                    </div>
+                    <div class="article-header-inner">
+                        <h3 class="article-header__title">A Picture Is Worth A Thousand Words</h3>
+                        <p class='article__author-name-title'>Author</p>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-img">
+                            <img src="images/i1.jpg" alt="article img">
+                            <div class="article-img__title">Flight over the country - 2014</div>
+                        </div> 
+                        <div class="article__text">
+							<p>Dad blizzard coffee unsave facepalm face feel like a sir tank mother aww yeah. Anonymous easter puking rainbows bear wodka simpson amnesia read cookie monster final week grey. Mom hammer creepy me gusta morbi eat le friend steve jobs cellphone clinton cereal guy. Good guy high school on okay a bacon homework in joke dog. Not Okay if you know what i mean nap monocle oh stop it, you pizza diablo 3 captain on weekend elephant. I Dont Get It drink ba dumm tss amet basic math female phone gentlemen strangers.</p>
+						</div>
+                        <div class="article-author">
+							<div class="author__name">Den Tarasf</div>
+							<img class="article-author__img" src="images/a1.png" alt="author img">
+							<div class="article-author__soc">
+								<ul>
+									<li><i class="fab fa-facebook-f"></i></li>
+									<li><i class="fab fa-twitter"></i></li>
+									<li><i class="fab fa-instagram"></i></li>
+								</ul>
+							</div>
+						</div>
+                    </div>             
+                </div>
+				
+                <div class="article">
+                    <div class="article-header">
+                        <p>My First Trip to NYC</p>
+						<p class="article-date">01/15/2014</p>
+                    </div>
+                    <div class="article-header-inner">
+                        <h3 class="article-header__title">Trip To New York Was Awesome</h3>
+                        <p class='article__author-name-title'>Author</p>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-img">
+                            <img src="images/2.jpg" alt="article img">
+                            <div class="article-img__title">Manhatten Skyline- 2014</div>
+                        </div> 
+                        <div class="article__text">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dad blizzard coffee unsave facepalm face feel like a sir tank mother aww yeah. Anonymous easter puking rainbows bear wodka simpson amnesia read cookie monster final week grey. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						</div>
+                        <div class="article-author">
+							<div class="author__name">Jonas Duri</div>
+							<img class="article-author__img" src="images/a1.png" alt="author img">
+							<div class="article-author__soc">
+								<ul>
+									<li><i class="fab fa-facebook-f"></i></li>
+									<li><i class="fab fa-twitter"></i></li>
+									<li><i class="fab fa-instagram"></i></li>
+								</ul>
+							</div>
+						</div>
+                    </div>             
+                </div>
+				
+            </article>
+            <aside>
+                <div class="side categorys">
+					<h3>Categorys</h3>
+					<ul>
+						<li><span class="side__arrow">&rtrif;</span> Traveling   (<span class="category__count"> 9 </span>)</li>
+						<li><span class="side__arrow">&rtrif;</span> Photos    (<span class="category__count"> 28 </span>)</li>
+						<li><span class="side__arrow">&rtrif;</span> Lifestyle    (<span class="category__count"> 4 </span>)</li>
+						<li><span class="side__arrow">&rtrif;</span> Inspiration   (<span class="category__count"> 4 </span>)</li>
+					</ul>
+				</div>
+                <div class="side archive">
+					<h3>Archive</h3>
+					<ul>
+						<li><span class="side__arrow">&rtrif;</span> January   (<span class="category__count"> 9 </span>)</li>
+						<li><span class="side__arrow">&rtrif;</span> February    (<span class="category__count"> 28 </span>)</li>
+						<li><span class="side__arrow">&rtrif;</span> March    (<span class="category__count"> 4 </span>)</li>
+						<li><span class="side__arrow">&rtrif;</span> June   (<span class="category__count"> 4 </span>)</li>
+					</ul>
+				</div>
+            </aside>
+        </main>
+		
+		<div class="main-bottom mr35">
+			<form class="contact-form">
+                <h3 class="inner-title">Contact Me</h3>
+                <p>Mom hammer creepy me gusta morbi eat le friend steve jobs cellphone clinton cereal guy. </p>
+                <input class="input-text" type="text" name="name" placeholder="Your Name">
+                <label for="name">*requered</label>
+                <br>
+                <input class="input-text" type="email" name="email" placeholder="Your E-Mail Address">
+                <label for="email">*please enter a valid address</label>
+                <br>
+                <textarea class="input-text input-text_aria" type="textaria" name="message" placeholder="Your Message"></textarea>
+                <br>
+                <input class="btn btn_submit" type="submit" value="SEND E-MAIL">
+            </form>
+			<div class="main-bottom-right">
+				<div class="random-post">
+                    <h3 class="inner-title">Random Post</h3>
+                    <div class="random-post-img"></div>
+                    <p>Some advise on Photography</p>
+                </div>
+                <div class="random-post">
+                    <h3 class="inner-title">Random Post</h3>
+                    <div class="random-post-img"></div>
+                    <p>Some advise on Photography</p>
+                </div>
+				<form class="sub-form">
+                    <h2 class="title">BLACK & WHITE</h2>
+                    <h3 class="inner-title">Newsletter</h3>
+                    <input class="input-text subs-email" type="email" name="subs-email" placeholder="Your E-Mail Address">
+                    <input class="btn btn_submit" type="submit" value="SUBSCRIBE">
+                </form>
+            </div>
+        </div>
+        
+        <div class="new-article mr35">
+			<form class="new-article-form">
+                <h3 class="inner-title">New post</h3>
+                <div class="form-container">
+                    <div class="form-text">
+                        <label  for="title" class="small-txt">Title</label>
+                        <br>
+                        <input class="input-text new-post-input input-aria-style" type="text" name="title" placeholder="Your article title">
+                        <br>
+                        <label for="category" class="small-txt">Chose category</label>
+                        <br>
+                        <select class="input-text new-post-input input-aria-style" type="text" name="category" placeholder="chose category">
+                            <option value="Luxery">Luxery</option>
+                            <option value="Exotic">Exotic</option>
+                            <option value="Local">Local</option>
+                        </select>
+                        <br>
+                        <label for="article" class="small-txt">Article</label>
+                        <br>
+                        <textarea class="input-text new-post-textaria input-text-aria-style" type="textaria" name="article" placeholder="Your article text"></textarea>
+                        <br>
+                    </div>
+                    <div class="form-img">
+                        <label for="imgLoad" class="small-txt">Upload image</label>
+                        <label for="imgLoad" class="label-forloadBtn">IMAGE</label>
+                        <br>
+                        <input class="loadBtn" id="imgLoad" type="file" name="imgLoad">
+                        <div class="form-img-uploaded"></div>
+                        <label  for="img-title" class="small-txt">Image title</label>
+                        <br>
+                        <input class="input-text new-post-input input-aria-style" type="text" name="img-title" placeholder="Your image title">
+                    </div>
+                </div>
+            <input class="btn btn_submit" type="submit" value="SEND">
+            </form>
+        </div>
+@endsection
