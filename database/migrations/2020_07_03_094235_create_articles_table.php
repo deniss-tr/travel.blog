@@ -15,11 +15,13 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('body');
-            $table->string('picture')->nullable();
-            $table->integer('likes_count')->default(0);
-            $table->integer('user_id')->references('id')->on('users');
+			$table->string('title');
+			$table->string('category');
+			$table->text('body');
+			$table->string('picture')->nullable();
+			$table->string('picture_title')->nullable();
+			$table->integer('likes_count')->default(0);
+			$table->integer('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
