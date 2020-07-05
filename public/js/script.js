@@ -18,7 +18,7 @@ menuBtn.addEventListener('click', () => {
     }
 });
 
-/////////// AVATAR CHARCODE
+/////////// AVATAR
 
 const colours = [
 		"#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#34495e", "#16a085", "#27ae60", "#2980b9", "#8e44ad", "#2c3e50", 
@@ -29,8 +29,9 @@ avatars.forEach(avatar => {
 	let authorAvatar = avatar.parentNode;
 	let authorName = authorAvatar.querySelector('.comment-author__name').textContent;
 	let letter = authorName[0].toUpperCase();
+	let colorIndex = Math.ceil( (letter.charCodeAt() - 65) / 3);
 	avatar.textContent = letter;
-	let color = colours[Math.floor(Math.random() * colours.length)];
+	let color = colours[colorIndex ];
 	avatar.style = `background: ${color};`
 })
 
@@ -45,4 +46,3 @@ heartBtn.forEach(heart => {
 		}
 	});
 });
-

@@ -19,7 +19,7 @@
                     </div>
                     <div class="article-content">
                         <div class="article-img">
-                            <img src="{{$article->picture}}" alt="article img">
+                            <img src="images/small/{{$article->picture}}" alt="article img">
                             <div class="article-img__title">{{$article->picture_title}}</div>
                         </div> 
                         <div class="article__text">
@@ -62,5 +62,10 @@
 	@endforeach				
 				</div>
 @endforeach	
+
+
+    <div class="pages">
+        {{ $articles->links() }}
+    </div>
         </article>
 @endsection

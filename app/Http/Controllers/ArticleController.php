@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 use App\Article;
 use App\User;
-
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Intervention\Image\ImageManagerStatic as Image;
 
 use Illuminate\Http\Request;
 
@@ -11,9 +12,43 @@ class ArticleController extends Controller
 {
     public function posts()
 	{
-		$articles = Article::paginate();
-		
-		
+		$postsByPage = 3;
+		$articles = Article::orderBy('created_at', 'desc')->paginate($postsByPage);		
 		return view('posts', compact('articles'));
+	}
+
+	public function newpost()
+	{
+		return view('newpost');
+	}
+
+	public function addpost(Request $req)
+	{
+		$validation = $req->validate([
+			'title' => 'required|max:50',
+			'article' => 'required|min:5|max:5000',
+			'imgLoad' => 'max:20480|image',
+		]);
+
+		$file = $req->file('imgLoad');
+		$req->imgLoad->store('public/images');
+		$imgName = $req->imgLoad->hashName();
+
+		$img = Image::make($file)
+			->resize(600, null, function ($constraint) {
+				$constraint->aspectRatio();
+			})
+			->save("images/small/{$imgName}");
+
+		$article = new Article();
+		$article->title = $req->input('title');
+		$article->category = $req->input('category');
+		$article->body = $req->input('article');
+		$article->picture = $imgName ;
+		$article->picture_title = $req->input('img-title');
+		$article->user_id = 1;
+		$article->save();
+
+		return redirect('/posts');
 	}
 }

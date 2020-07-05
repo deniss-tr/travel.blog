@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'PageController@index');
 Route::get('/gallery', 'PageController@gallery');
 Route::get('/posts', 'ArticleController@posts');
+Route::get('/posts/new', 'ArticleController@newpost');
+Route::post('/posts/new', 'ArticleController@addpost');
 Route::get('/signin', 'PageController@signin');
 Route::get('/signup', 'PageController@signup');
 

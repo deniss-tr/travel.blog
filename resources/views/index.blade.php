@@ -3,7 +3,6 @@
 @section('title', 'Travel Blog')
 
 
-
 @section('content')
         <div class="gallery mr35">
 
@@ -86,7 +85,7 @@
                     </div>
                     <div class="article-content">
                         <div class="article-img">
-                            <img src="{{$article->picture}}" alt="article img">
+                            <img src="images/small/{{$article->picture}}" alt="article img">
                             <div class="article-img__title">{{$article->picture_title}}</div>
                         </div> 
                         <div class="article__text">
@@ -165,40 +164,5 @@
             </div>
         </div>
         
-        <div class="new-article mr35">
-			<form class="new-article-form">
-                <h3 class="inner-title">New post</h3>
-                <div class="form-container">
-                    <div class="form-text">
-                        <label  for="title" class="small-txt">Title</label>
-                        <br>
-                        <input class="input-text new-post-input input-aria-style" type="text" name="title" placeholder="Your article title">
-                        <br>
-                        <label for="category" class="small-txt">Chose category</label>
-                        <br>
-                        <select class="input-text new-post-input input-aria-style" type="text" name="category" placeholder="chose category">
-                            <option value="Luxery">Luxery</option>
-                            <option value="Exotic">Exotic</option>
-                            <option value="Local">Local</option>
-                        </select>
-                        <br>
-                        <label for="article" class="small-txt">Article</label>
-                        <br>
-                        <textarea class="input-text new-post-textaria input-text-aria-style" type="textaria" name="article" placeholder="Your article text"></textarea>
-                        <br>
-                    </div>
-                    <div class="form-img">
-                        <label for="imgLoad" class="small-txt">Upload image</label>
-                        <label for="imgLoad" class="label-forloadBtn">IMAGE</label>
-                        <br>
-                        <input class="loadBtn" id="imgLoad" type="file" name="imgLoad">
-                        <div class="form-img-uploaded"></div>
-                        <label  for="img-title" class="small-txt">Image title</label>
-                        <br>
-                        <input class="input-text new-post-input input-aria-style" type="text" name="img-title" placeholder="Your image title">
-                    </div>
-                </div>
-            <input class="btn btn_submit" type="submit" value="SEND">
-            </form>
-        </div>
+
 @endsection

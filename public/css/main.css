@@ -830,4 +830,16 @@ footer {
 	padding-bottom: 2px;
 	margin: 2px 5px;
 }
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.page-item {
+    list-style-type: none;
+    display: inline-block;
+}
+.page-link {
+    margin: 0 10px;
 
+}
