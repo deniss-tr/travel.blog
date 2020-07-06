@@ -44,7 +44,7 @@
 			</div>
 				
 				
-	<div>comments: {{count($article->comments)}}</div>	
+	<div>Comments: {{count($article->comments)}} Likes: {{$article->likes_count}}</div>	
 	
 				</div>
 				</a>

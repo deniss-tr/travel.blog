@@ -10,7 +10,7 @@ class PageController extends Controller
 {
     public function index()
 	{
-		$articles = Article::orderBy('created_at', 'desc')->paginate(2);
+		$articles = Article::orderBy('created_at', 'desc')->paginate(8);
 		$categorys = DB::table('articles')->pluck('category');
 		$categorys = array_count_values($categorys->toArray());
 		

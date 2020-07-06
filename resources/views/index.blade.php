@@ -6,11 +6,12 @@
 @section('content')
         <div class="gallery mr35">
 
-                <div class="card">
+        @foreach($articles as $article)
+                <div class="card" style="background: url(../images/small/{{ $article->picture }}), center, no-repeat; background-size: cover;">
                     <div class="card-header">
                         <div class="card-header__title">
-                            <h6>Awesome Day</h6>
-                            <p>View from above</p>
+                            <h6>{{ $article->title }}</h6>
+                            <p>{{ $article->picture_title }}</p>
                         </div>
                         <div class="card-header__date">
                             <p>JAN</p>
@@ -18,49 +19,21 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href=''>
+                        <a href='/posts/{{ $article->id }}'>
                             <div class="card-footer__social">
-                                <span><i class="fas fa-heart"></i></span><span>37</span>
-                                <span><i class="fas fa-comments"></i></span><span>15</span>
+                                <span><i class="fas fa-heart"></i></span><span>{{ $article->likes_count }}</span>
+                                <span><i class="fas fa-comments"></i></span><span>15NUMBER</span>
                             </div>
                         </a>
                         <div class="card-footer__openimg">
-                            <a href="images/1.jpg" data-lightbox="images" data-title="Title text text"><i class="fas fa-expand-arrows-alt"></i></a>
+                            <a href="storage/images/{{ $article->picture }}" data-lightbox="images" data-title="Title text text">
+                                <i class="fas fa-expand-arrows-alt"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
+        @endforeach
 
-                <div class="card" style="background-image: 'images/1.jpg'">
-                    <div class="card-header">
-                        <div class="card-header__title">
-                            <h6>New picture</h6>
-                            <p>View from above</p>
-                        </div>
-                        <div class="card-header__date">
-                            <p>JAN</p>
-                            <p>25th</p>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href=''>
-                            <div class="card-footer__social">
-                                <span><i class="fas fa-heart"></i></span><span>37</span>
-                                <span><i class="fas fa-comments"></i></span><span>15</span>
-                            </div>
-                        </a>
-                        <div class="card-footer__openimg">
-                            <a href="images/11.jpg" data-lightbox="images" data-title="Title text text"><i class="fas fa-expand-arrows-alt"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="card">3</div>
-                <div class="card">4</div>
-                <div class="card">5</div>
-                <div class="card">6</div>
-                <div class="card">7</div>
-                <div class="card">8</div>
         </div>
 
         <div class="about-me mr35">
@@ -73,27 +46,27 @@
 
         <main class="mr35">
             <article>
-@foreach ($articles as $article)
+@for($i = 0; $i < 2; $i++)
 			<div class="article">
 				<div class="article-header">
-					<p>{{$article->category}}</span></p>
-					<p class="article-date">{{$article->created_at}}</p>
+					<p>{{$articles[$i]->category}}</span></p>
+					<p class="article-date">{{$articles[$i]->created_at}}</p>
 				</div>
 				<div class="article-header-inner">
-					<h3 class="article-header__title">{{$article->title}}<span class="heart like"><i class="fas fa-heart fa-lg"></i></h3>
+					<h3 class="article-header__title">{{$articles[$i]->title}}<span class="heart like"><i class="fas fa-heart fa-lg"></i></h3>
 					<p class='article__author-name-title'>Author</p>
 				</div>
 				<div class="article-content">
 					<div class="article-img">
-						<img src="../images/small/{{$article->picture}}" alt="article img">
-						<div class="article-img__title">{{$article->picture_title}}</div>
+						<img src="../images/small/{{$articles[$i]->picture}}" alt="article img">
+						<div class="article-img__title">{{$articles[$i]->picture_title}}</div>
 					</div> 
 					<div class="article__text">
-						<p>{{$article->body}}</p>
+						<p>{{$articles[$i]->body}}</p>
 					</div>
 					<div class="article-author">
-					@if( $article->creator )
-						<div class="author__name" >{{$article->creator->name}}</div>
+					@if( $articles[$i]->creator )
+						<div class="author__name" >{{$articles[$i]->creator->name}}</div>
 					@else
 						<div class="author__name" >noname</div>
 					@endif
@@ -108,7 +81,7 @@
 					</div>
 				</div>
 			</div>
-@endforeach				
+@endfor			
 
 				
             </article>

@@ -13,6 +13,10 @@ class Article extends Model
     }
 	public function comments()
     {
-        return $this->hasMany('App\Comment', 'article_id');
+        return $this->hasMany('App\Comment', 'article_id')->orderBy('created_at', 'desc');
+    }
+    public function addLike()
+    {
+        
     }
 }

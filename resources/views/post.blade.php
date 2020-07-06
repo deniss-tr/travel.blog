@@ -14,12 +14,17 @@
 						<p class="article-date">{{$article->created_at}}</p>
 					</div>
 					<div class="article-header-inner">
-						<h3 class="article-header__title">{{$article->title}}<span class="heart like"><i class="fas fa-heart fa-lg"></i></h3>
+						<h3 class="article-header__title">{{$article->title}}<span class="heart like">
+							<i class="fas fa-heart fa-lg"></i>
+							<span class="likes-count">Likes count: <span>{{$article->likes_count}}</span></span>
+						</h3>
 						<p class='article__author-name-title'>Author</p>
 					</div>
 					<div class="article-content">
 						<div class="article-img">
+							<a data-lightbox="images" href="../storage/images/{{$article->picture}}">
 							<img src="../images/small/{{$article->picture}}" alt="article img">
+							</a>
 							<div class="article-img__title">{{$article->picture_title}}</div>
 						</div> 
 						<div class="article__text">
@@ -44,11 +49,12 @@
 				</div>
 				
 				<div class="add-comment">
-					<form class="add-comment-form">
-						<input class="add-comment-text input-text" type="text" name="comment-text" placeholder="add comment">
+					<form class="add-comment-form" method="post" action="/comments">
+					@csrf
+						<input class="add-comment-text input-text" type="text" name="body" placeholder="add comment">
+						<input type="hidden" name="article_id" value="{{ $article->id }}" />
 						<input class="btn add-comment__btn" type="submit" value="add">
-					</form>
-				
+					</form>				
 				</div>
 				
 	@foreach ($article->comments as $comment)	

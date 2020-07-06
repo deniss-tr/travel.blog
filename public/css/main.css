@@ -181,9 +181,9 @@ header {
     height: 265px;
     width: 265px;
     border: solid 5px #f6f6f6;
-    background: url('../images/1.jpg'), center, no-repeat;
+    background: gray;
   	filter: grayscale(100%);
-  	background-size: cover;
+    background-size: cover;
     margin-bottom: 35px;
 	transition: filter 8s;
 }
@@ -342,6 +342,11 @@ article {
 }
 .article-author__img {
 	margin-bottom: 39px;
+}
+.likes-count {
+    font-size: 14px;
+    color: black;
+    font-weight: 400;
 }
 
 /* ---------------- aside ------------------- */
