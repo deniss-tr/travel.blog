@@ -27,7 +27,12 @@ const colours = [
 let avatars = document.querySelectorAll('.author-avatar');
 avatars.forEach(avatar => {
 	let authorAvatar = avatar.parentNode;
-	let authorName = authorAvatar.querySelector('.comment-author__name').textContent;
+	let authorName ='';
+	if(authorAvatar.querySelector('.comment-author__name')) {
+		authorName = authorAvatar.querySelector('.comment-author__name').textContent
+	} else {
+		authorName = authorAvatar.querySelector('.author__name').textContent;
+	}
 	let letter = authorName[0].toUpperCase();
 	let colorIndex = Math.ceil( (letter.charCodeAt() - 65) / 3);
 	avatar.textContent = letter;

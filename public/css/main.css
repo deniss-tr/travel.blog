@@ -328,7 +328,7 @@ article {
 	padding-right: 5px;
 }
 .author__name {
-	float: right;
+
 	color: #E6618C;
 	margin-bottom: 8px;
 	text-align: center;
@@ -829,6 +829,11 @@ footer {
 	border-radius: 50%;
 	padding-bottom: 2px;
 	margin: 2px 5px;
+}
+.article-author .author-avatar {
+	width: 30px;
+	height: 30px;
+	margin-bottom: 10px;
 }
 .pagination {
     display: flex;

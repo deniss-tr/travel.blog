@@ -21,7 +21,6 @@
 			@include('inc.header')
 			@yield('content')
 			@include('inc.footer')
-			
 		</div>
 		<script src="{{ asset('js/script.js') }}"></script>
     </body>

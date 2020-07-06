@@ -16,7 +16,11 @@ class ArticleController extends Controller
 		$articles = Article::orderBy('created_at', 'desc')->paginate($postsByPage);		
 		return view('posts', compact('articles'));
 	}
-
+    public function post($id)
+	{
+		$article = Article::find($id);		
+		return view('post', compact('article'));
+	}
 	public function newpost()
 	{
 		return view('newpost');
@@ -46,7 +50,7 @@ class ArticleController extends Controller
 		$article->body = $req->input('article');
 		$article->picture = $imgName ;
 		$article->picture_title = $req->input('img-title');
-		$article->user_id = 1;
+		$article->user_id = auth()->user()->id;
 		$article->save();
 
 		return redirect('/posts');

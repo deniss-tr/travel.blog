@@ -16,7 +16,13 @@ Route::get('/', 'PageController@index');
 Route::get('/gallery', 'PageController@gallery');
 Route::get('/posts', 'ArticleController@posts');
 Route::get('/posts/new', 'ArticleController@newpost');
+Route::get('/posts/{id}', 'ArticleController@post');
 Route::post('/posts/new', 'ArticleController@addpost');
 Route::get('/signin', 'PageController@signin');
 Route::get('/signup', 'PageController@signup');
 
+
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'PageController@index');

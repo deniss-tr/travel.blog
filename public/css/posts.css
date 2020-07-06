@@ -99,6 +99,14 @@ article{
 .new-post-input option {
     font-size: 18px;
 }
+.article-author .author__name {
+	float: none;
+}
+.article-author .author-avatar {
+	height: 30px;
+	width: 30px;
+	margin-bottom: 20px;
+}
 
 @media (max-width: 800px) {
     .article {

@@ -74,36 +74,40 @@
         <main class="mr35">
             <article>
 @foreach ($articles as $article)
-                <div class="article">
-                    <div class="article-header">
-                        <p>{{$article->title}}</p>
-						<p class="article-date">{{$article->created_at}}</p>
-                    </div>
-                    <div class="article-header-inner">
-                        <h3 class="article-header__title">{{$article->title}}</h3>
-                        <p class='article__author-name-title'>Author</p>
-                    </div>
-                    <div class="article-content">
-                        <div class="article-img">
-                            <img src="images/small/{{$article->picture}}" alt="article img">
-                            <div class="article-img__title">{{$article->picture_title}}</div>
-                        </div> 
-                        <div class="article__text">
-							<p>{{$article->body}}</p>
+			<div class="article">
+				<div class="article-header">
+					<p>{{$article->category}}</span></p>
+					<p class="article-date">{{$article->created_at}}</p>
+				</div>
+				<div class="article-header-inner">
+					<h3 class="article-header__title">{{$article->title}}<span class="heart like"><i class="fas fa-heart fa-lg"></i></h3>
+					<p class='article__author-name-title'>Author</p>
+				</div>
+				<div class="article-content">
+					<div class="article-img">
+						<img src="../images/small/{{$article->picture}}" alt="article img">
+						<div class="article-img__title">{{$article->picture_title}}</div>
+					</div> 
+					<div class="article__text">
+						<p>{{$article->body}}</p>
+					</div>
+					<div class="article-author">
+					@if( $article->creator )
+						<div class="author__name" >{{$article->creator->name}}</div>
+					@else
+						<div class="author__name" >noname</div>
+					@endif
+						<div class="author-avatar"></div>
+						<div class="article-author__soc">
+							<ul>
+								<li><i class="fab fa-facebook-f"></i></li>
+								<li><i class="fab fa-twitter"></i></li>
+								<li><i class="fab fa-instagram"></i></li>
+							</ul>
 						</div>
-                        <div class="article-author">
-							<div class="author__name">{{$article->creator->login}}</div>
-							<img class="article-author__img" src="images/a1.png" alt="author img">
-							<div class="article-author__soc">
-								<ul>
-									<li><i class="fab fa-facebook-f"></i></li>
-									<li><i class="fab fa-twitter"></i></li>
-									<li><i class="fab fa-instagram"></i></li>
-								</ul>
-							</div>
-						</div>
-                    </div>             
-                </div>
+					</div>
+				</div>
+			</div>
 @endforeach				
 
 				
@@ -112,19 +116,27 @@
                 <div class="side categorys">
 					<h3>Categorys</h3>
 					<ul>
-						<li><span class="side__arrow">&rtrif;</span> Traveling   (<span class="category__count"> 9 </span>)</li>
-						<li><span class="side__arrow">&rtrif;</span> Photos    (<span class="category__count"> 28 </span>)</li>
-						<li><span class="side__arrow">&rtrif;</span> Lifestyle    (<span class="category__count"> 4 </span>)</li>
-						<li><span class="side__arrow">&rtrif;</span> Inspiration   (<span class="category__count"> 4 </span>)</li>
+					@foreach ($categorys as $category => $count)
+						<li>
+							<a href="">
+								<span class="side__arrow">&rtrif;</span> {{ $category }}  (<span class="category__count"> {{$count}} </span>)
+							</a>
+						</li>
+						
+					@endforeach
+					
 					</ul>
 				</div>
                 <div class="side archive">
 					<h3>Archive</h3>
 					<ul>
-						<li><span class="side__arrow">&rtrif;</span> January   (<span class="category__count"> 9 </span>)</li>
-						<li><span class="side__arrow">&rtrif;</span> February    (<span class="category__count"> 28 </span>)</li>
-						<li><span class="side__arrow">&rtrif;</span> March    (<span class="category__count"> 4 </span>)</li>
-						<li><span class="side__arrow">&rtrif;</span> June   (<span class="category__count"> 4 </span>)</li>
+					@foreach ($dates as $month => $count)
+						<li>
+							<a href="">
+								<span class="side__arrow">&rtrif;</span> {{ $month }}   (<span class="category__count"> {{ $count }} </span>)
+							</a>
+						</li>
+					@endforeach
 					</ul>
 				</div>
             </aside>
