@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Article;
 use App\User;
+use App\Like;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Intervention\Image\ImageManagerStatic as Image;
 
@@ -10,16 +11,35 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+	protected function getLike($userId, $articleId) {
+		$like = \DB::table('likes')
+            ->where('user_id', '=', $userId)
+			->where('article_id', '=', $articleId)
+			->get();
+		return $like;
+	}
+	
     public function posts()
 	{
-		$postsByPage = 3;
-		$articles = Article::orderBy('created_at', 'desc')->paginate($postsByPage);		
+		$postsByPage = 5;
+		$articles = Article::orderBy('created_at', 'desc')->paginate($postsByPage);	
 		return view('posts', compact('articles'));
 	}
     public function post($id)
 	{
-		$article = Article::find($id);		
-		return view('post', compact('article'));
+		$userId = auth()->user()->id;
+		$article = Article::find($id);
+		$like = $this->getLike($userId, $id);
+		$likeValue = 'like';
+		if($like->isEmpty()) { 
+			$likeValue = '';
+		}
+		$likes = \DB::table('likes')
+			->where('article_id', '=', $id)
+			->get();
+		$likesCount = $likes->count();
+		
+		return view('post', compact('article', 'userId', 'likeValue', 'likesCount'));
 	}
 	public function newpost()
 	{
@@ -54,5 +74,28 @@ class ArticleController extends Controller
 		$article->save();
 
 		return redirect('/posts');
+	}
+	public function changeLike(Request $req) 
+	{
+		$article_id = $req->input('articleId');
+		$user_id = $req->input('userId');
+		$action = $req->input('action');
+		
+		$like = $this->getLike($user_id, $article_id);
+		
+		if($like->isEmpty()) {
+			$setLike = new Like();
+			$setLike->user_id = $user_id;
+			$setLike->article_id = $article_id;
+			$setLike->save();
+		} else {
+			\DB::table('likes')
+            ->where('user_id', '=', $user_id)
+			->where('article_id', '=', $article_id)
+			->delete();
+		}
+		
+		
+		return response()->json(true);
 	}
 }

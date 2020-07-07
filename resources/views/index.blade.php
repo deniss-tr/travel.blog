@@ -53,7 +53,7 @@
 					<p class="article-date">{{$articles[$i]->created_at}}</p>
 				</div>
 				<div class="article-header-inner">
-					<h3 class="article-header__title">{{$articles[$i]->title}}<span class="heart like"><i class="fas fa-heart fa-lg"></i></h3>
+					<h3 class="article-header__title">{{$articles[$i]->title}}<span class="heart"></h3>
 					<p class='article__author-name-title'>Author</p>
 				</div>
 				<div class="article-content">

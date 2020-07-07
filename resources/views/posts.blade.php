@@ -7,14 +7,14 @@
 @section('content')
         <article>
 @foreach ($articles as $article)
-			<a href="/posts/{{$article->id}}"><div class="article-wrapper">
+			<a href="/posts/{{$article->id}}"><div class="article-wrapper article-wrapper_hov">
 			<div class="article">
 				<div class="article-header">
 					<p>{{$article->category}}</span></p>
 					<p class="article-date">{{$article->created_at}}</p>
 				</div>
 				<div class="article-header-inner">
-					<h3 class="article-header__title">{{$article->title}}<span class="heart like"><i class="fas fa-heart fa-lg"></i></h3>
+					<h3 class="article-header__title">{{$article->title}}<span class="heart like"></h3>
 					<p class='article__author-name-title'>Author</p>
 				</div>
 				<div class="article-content">
@@ -44,7 +44,7 @@
 			</div>
 				
 				
-	<div>Comments: {{count($article->comments)}} Likes: {{$article->likes_count}}</div>	
+	<div class="post-statistics">Comments: {{count($article->comments)}} Likes: {{$article->likes_count}}</div>	
 	
 				</div>
 				</a>

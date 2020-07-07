@@ -36,7 +36,7 @@ avatars.forEach(avatar => {
 	let letter = authorName[0].toUpperCase();
 	let colorIndex = Math.ceil( (letter.charCodeAt() - 65) / 3);
 	avatar.textContent = letter;
-	let color = colours[colorIndex ];
+	let color = colours[colorIndex];
 	avatar.style = `background: ${color};`
 })
 
@@ -44,10 +44,40 @@ avatars.forEach(avatar => {
 let heartBtn = document.querySelectorAll('.heart');
 heartBtn.forEach(heart => {
 	heart.addEventListener('click', () => {
+		let parentN = heart.parentNode;
+		let articleId = parentN.querySelector('.article_id').value;
+		let userId = parentN.querySelector('.user_id').value;
+		let likesCount = parentN.querySelector('.likes-count-number');
+		console.log(likesCount);
+	//	console.log(userId);
 		if(!heart.classList.contains('like')){
-			heart.classList.add('like');
+			fetch(`/likes`, {
+			method: 'POST',
+			headers: {
+			  'Accept': 'application/json',
+			  'Content-Type': 'application/json',
+			  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
+			body: JSON.stringify({articleId: articleId, userId: userId, action: 'set'})
+		  })
+		  .then(result => result.json())
+		  .then(heart.classList.add('like'))
+		  .then(likesCount.textContent = Number(likesCount.textContent) + 1);
+		  
+		  
 		} else {
-			heart.classList.remove('like');
+			fetch(`/likes`, {
+			method: 'POST',
+			headers: {
+			  'Accept': 'application/json',
+			  'Content-Type': 'application/json',
+			  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
+			body: JSON.stringify({articleId: articleId, userId: userId, action: 'unset'})
+		  })
+		  .then(result => result.json())
+		  .then(heart.classList.remove('like'))
+		  .then(likesCount.textContent = Number(likesCount.textContent) - 1);		  
 		}
 	});
 });

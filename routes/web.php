@@ -19,7 +19,7 @@ Route::get('/posts/new', 'ArticleController@newpost');
 Route::get('/posts/{id}', 'ArticleController@post');
 Route::post('/posts/new', 'ArticleController@addpost');
 Route::post('/comments', 'CommentController@addComment');
-Route::post('/likes', 'ArticleController@addLike');
+Route::post('/likes', 'ArticleController@changeLike');
 Route::get('/signin', 'PageController@signin');
 Route::get('/signup', 'PageController@signup');
 

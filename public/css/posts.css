@@ -23,7 +23,7 @@ article{
     padding-bottom: 30px;
 }
 .article-img__title {
-    padding-bottom: 30px;
+    padding-bottom: 15px;
 }
 .article-comment-row {
     display: flex;
@@ -68,10 +68,11 @@ article{
 	display: flex;
     justify-content: start;
 	align-items: center;
-	margin: 10px 10px 10px 30px;
+	margin: 10px 10px 0 30px;
+	padding-bottom: 20px;
 }
 .add-comment-text {
-	min-width: 250px;
+	min-width: 200px;
 	max-width: 400px;
 	width: 100%;
 	padding: 0 20px;
@@ -107,6 +108,13 @@ article{
 	width: 30px;
 	margin-bottom: 20px;
 }
+.post-statistics {
+	margin-left: 31px;
+	padding-bottom: 20px;
+}
+.article-wrapper_hov:hover {
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
 
 @media (max-width: 800px) {
     .article {
@@ -125,5 +133,8 @@ article{
     .article-img__title {
         padding-bottom: 10px;
     }
+	.add-comment-form {
+		margin-left: 20px;
+	}
 
 }

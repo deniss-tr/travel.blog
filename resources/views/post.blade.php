@@ -5,6 +5,7 @@
 
 
 @section('content')
+<meta name="csrf-token" content="{{ csrf_token() }}">
         <article>
 			<div class="article-wrapper">
 			
@@ -14,9 +15,15 @@
 						<p class="article-date">{{$article->created_at}}</p>
 					</div>
 					<div class="article-header-inner">
-						<h3 class="article-header__title">{{$article->title}}<span class="heart like">
+						<h3 class="article-header__title">{{$article->title}}
+						
+						<span class="heart {{ $likeValue }}">
+
+							<input class="article_id" type="hidden" name="article_id" value="{{ $article->id }}" />
+							<input class="user_id" type="hidden" name="user_id" value="{{ $userId }}" />
 							<i class="fas fa-heart fa-lg"></i>
-							<span class="likes-count">Likes count: <span>{{$article->likes_count}}</span></span>
+							<span class="likes-count">Likes count: <span class="likes-count-number">{{$likesCount}}</span></span>
+
 						</h3>
 						<p class='article__author-name-title'>Author</p>
 					</div>
@@ -47,7 +54,7 @@
 						</div>
 					</div>
 				</div>
-				
+				@if( auth()->check() )
 				<div class="add-comment">
 					<form class="add-comment-form" method="post" action="/comments">
 					@csrf
@@ -56,6 +63,7 @@
 						<input class="btn add-comment__btn" type="submit" value="add">
 					</form>				
 				</div>
+				@endif
 				
 	@foreach ($article->comments as $comment)	
 					<div class="article-comment-row">
