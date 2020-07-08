@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Travel Blog new posts')
-@section('sub-css', '../css/posts.css')
+@section('sub-css', asset("css/posts.css"))
 
 @section('content')
 <div class="new-article mr35">

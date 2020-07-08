@@ -853,3 +853,6 @@ footer {
     margin: 0 10px;
 
 }
+.article-wrapper_hov:hover {
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}

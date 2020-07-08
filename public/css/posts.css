@@ -112,9 +112,7 @@ article{
 	margin-left: 31px;
 	padding-bottom: 20px;
 }
-.article-wrapper_hov:hover {
-	box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
+
 
 @media (max-width: 800px) {
     .article {

@@ -27,23 +27,48 @@ class ArticleController extends Controller
 	}
     public function post($id)
 	{
-		$userId = auth()->user()->id;
 		$article = Article::find($id);
-		$like = $this->getLike($userId, $id);
-		$likeValue = 'like';
-		if($like->isEmpty()) { 
-			$likeValue = '';
-		}
 		$likes = \DB::table('likes')
 			->where('article_id', '=', $id)
 			->get();
 		$likesCount = $likes->count();
+		
+		if(auth()->check()) {
+			$userId = auth()->user()->id;
+			$like = $this->getLike($userId, $id);
+			$likeValue = 'like';
+			if($like->isEmpty()) { 
+				$likeValue = '';
+			}
+			return view('post', compact('article', 'userId', 'likeValue', 'likesCount'));
+		}
+		$likeValue = '';
+		$userId = false;
 		
 		return view('post', compact('article', 'userId', 'likeValue', 'likesCount'));
 	}
 	public function newpost()
 	{
 		return view('newpost');
+	}
+	
+	public function categoryPosts($category)
+	{
+		$postsByPage = 5;
+		$articles = Article::orderBy('created_at', 'desc')
+		->where('category', '=', $category)
+		->paginate($postsByPage);
+		
+		return view('posts', compact('articles'));
+	}
+	public function archivePosts($month)
+	{
+	//	$postsByPage = 5;
+	//	$articles = Article::orderBy('created_at', 'desc')
+	//	->where('category', '=', $category)
+	//	->paginate($postsByPage);
+		
+	//	return view('posts', compact('articles'));
 	}
 
 	public function addpost(Request $req)
@@ -94,7 +119,6 @@ class ArticleController extends Controller
 			->where('article_id', '=', $article_id)
 			->delete();
 		}
-		
 		
 		return response()->json(true);
 	}

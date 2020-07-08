@@ -16,6 +16,8 @@ Route::get('/', 'PageController@index');
 Route::get('/gallery', 'PageController@gallery');
 Route::get('/posts', 'ArticleController@posts');
 Route::get('/posts/new', 'ArticleController@newpost');
+Route::get('/posts/category/{category}', 'ArticleController@categoryPosts');
+Route::get('/posts/archive/{month}', 'ArticleController@archivePosts');
 Route::get('/posts/{id}', 'ArticleController@post');
 Route::post('/posts/new', 'ArticleController@addpost');
 Route::post('/comments', 'CommentController@addComment');

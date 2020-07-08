@@ -20,6 +20,7 @@ class PageController extends Controller
 				return date("F",strtotime($item));
 			});	
 		$dates = array_count_values($dates->toArray());
+		//https://stackoverflow.com/questions/45138724/how-to-extract-month-day-from-created-at-column-in-laravel
 		
 		return view('index', compact('articles', 'categorys', 'dates'));
 	}

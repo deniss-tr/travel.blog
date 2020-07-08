@@ -15,8 +15,8 @@ class Article extends Model
     {
         return $this->hasMany('App\Comment', 'article_id')->orderBy('created_at', 'desc');
     }
-    public function addLike()
+    public function likes()
     {
-        
+        return $this->hasMany('App\Like', 'article_id')->orderBy('created_at', 'desc');
     }
 }

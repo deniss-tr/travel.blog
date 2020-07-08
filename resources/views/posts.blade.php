@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Travel Blog posts')
-@section('sub-css', "css/posts.css")
+@section('sub-css', asset("css/posts.css"))
 
 
 @section('content')
@@ -14,12 +14,16 @@
 					<p class="article-date">{{$article->created_at}}</p>
 				</div>
 				<div class="article-header-inner">
-					<h3 class="article-header__title">{{$article->title}}<span class="heart like"></h3>
+					<h3 class="article-header__title">{{$article->title}}
+						<span class="likes-count"> 
+							<i class="fas fa-heart fa-lg"></i> Likes count: <span class="likes-count-number">{{$article->likes->count()}}</span>
+						</span>
+					</h3>
 					<p class='article__author-name-title'>Author</p>
 				</div>
 				<div class="article-content">
 					<div class="article-img">
-						<img src="../images/small/{{$article->picture}}" alt="article img">
+						<img src='{{ asset("images/small/$article->picture")}}' alt="article img">
 						<div class="article-img__title">{{$article->picture_title}}</div>
 					</div> 
 					<div class="article__text">
@@ -44,7 +48,7 @@
 			</div>
 				
 				
-	<div class="post-statistics">Comments: {{count($article->comments)}} Likes: {{$article->likes_count}}</div>	
+	<div class="post-statistics">Comments: {{count($article->comments)}}</div>	
 	
 				</div>
 				</a>

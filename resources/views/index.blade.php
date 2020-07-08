@@ -14,15 +14,15 @@
                             <p>{{ $article->picture_title }}</p>
                         </div>
                         <div class="card-header__date">
-                            <p>JAN</p>
-                            <p>25th</p>
+                            <p>{{ strtoupper(substr(date("F",strtotime($article->created_at)),0, 3)) }}</p>
+                            <p>{{ date("d",strtotime($article->created_at)) }}th</p>
                         </div>
                     </div>
                     <div class="card-footer">
                         <a href='/posts/{{ $article->id }}'>
                             <div class="card-footer__social">
-                                <span><i class="fas fa-heart"></i></span><span>{{ $article->likes_count }}</span>
-                                <span><i class="fas fa-comments"></i></span><span>15NUMBER</span>
+                                <span><i class="fas fa-heart"></i></span><span>{{ $article->likes->count() }}</span>
+                                <span><i class="fas fa-comments"></i></span><span>{{ $article->comments->count() }}</span>
                             </div>
                         </a>
                         <div class="card-footer__openimg">
@@ -47,13 +47,18 @@
         <main class="mr35">
             <article>
 @for($i = 0; $i < 2; $i++)
-			<div class="article">
+		<a href="/posts/{{$articles[$i]->id}}">
+			<div class="article article-wrapper_hov">
 				<div class="article-header">
 					<p>{{$articles[$i]->category}}</span></p>
 					<p class="article-date">{{$articles[$i]->created_at}}</p>
 				</div>
 				<div class="article-header-inner">
-					<h3 class="article-header__title">{{$articles[$i]->title}}<span class="heart"></h3>
+					<h3 class="article-header__title">{{$articles[$i]->title}}
+						<span class="likes-count"> 
+							<i class="fas fa-heart fa-lg"></i> Likes count: <span class="likes-count-number">{{$articles[$i]->likes->count()}}</span>
+						</span>
+					</h3>
 					<p class='article__author-name-title'>Author</p>
 				</div>
 				<div class="article-content">
@@ -81,6 +86,7 @@
 					</div>
 				</div>
 			</div>
+		</a>
 @endfor			
 
 				
@@ -91,7 +97,7 @@
 					<ul>
 					@foreach ($categorys as $category => $count)
 						<li>
-							<a href="">
+							<a href="/posts/category/{{ $category }}">
 								<span class="side__arrow">&rtrif;</span> {{ $category }}  (<span class="category__count"> {{$count}} </span>)
 							</a>
 						</li>

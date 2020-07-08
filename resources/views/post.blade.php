@@ -16,15 +16,18 @@
 					</div>
 					<div class="article-header-inner">
 						<h3 class="article-header__title">{{$article->title}}
-						
+						@if(auth()->check())
 						<span class="heart {{ $likeValue }}">
 
 							<input class="article_id" type="hidden" name="article_id" value="{{ $article->id }}" />
 							<input class="user_id" type="hidden" name="user_id" value="{{ $userId }}" />
 							<i class="fas fa-heart fa-lg"></i>
 							<span class="likes-count">Likes count: <span class="likes-count-number">{{$likesCount}}</span></span>
-
+						@else
+							<span class="likes-count"> <i class="fas fa-heart fa-lg"></i> Likes count: <span class="likes-count-number">{{$likesCount}}</span></span>
 						</h3>
+							
+						@endif
 						<p class='article__author-name-title'>Author</p>
 					</div>
 					<div class="article-content">
