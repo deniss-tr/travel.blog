@@ -12,8 +12,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'PageController@index');
+//Route::get('/', 'PageController@index');
 Route::get('/gallery', 'PageController@gallery');
+Route::post('/newcontact', 'PageController@newContact');
+Route::post('/newsub', 'PageController@newSub');
 Route::get('/posts', 'ArticleController@posts');
 Route::get('/posts/new', 'ArticleController@newpost');
 Route::get('/posts/category/{category}', 'ArticleController@categoryPosts');

@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+
+	protected $postsByPage = 5;
 	protected function getLike($userId, $articleId) {
 		$like = \DB::table('likes')
             ->where('user_id', '=', $userId)
@@ -21,8 +23,7 @@ class ArticleController extends Controller
 	
     public function posts()
 	{
-		$postsByPage = 5;
-		$articles = Article::orderBy('created_at', 'desc')->paginate($postsByPage);	
+		$articles = Article::orderBy('created_at', 'desc')->paginate($this->postsByPage);	
 		return view('posts', compact('articles'));
 	}
     public function post($id)
@@ -54,21 +55,20 @@ class ArticleController extends Controller
 	
 	public function categoryPosts($category)
 	{
-		$postsByPage = 5;
 		$articles = Article::orderBy('created_at', 'desc')
 		->where('category', '=', $category)
-		->paginate($postsByPage);
+		->paginate($this->postsByPage);
 		
 		return view('posts', compact('articles'));
 	}
 	public function archivePosts($month)
 	{
-	//	$postsByPage = 5;
-	//	$articles = Article::orderBy('created_at', 'desc')
-	//	->where('category', '=', $category)
-	//	->paginate($postsByPage);
+		$monthNumber = date('m', strtotime($month));
+		$articles = Article::orderBy('created_at', 'desc')
+		->whereMonth('created_at', $monthNumber)
+		->paginate($this->postsByPage);
 		
-	//	return view('posts', compact('articles'));
+		return view('posts', compact('articles'));
 	}
 
 	public function addpost(Request $req)

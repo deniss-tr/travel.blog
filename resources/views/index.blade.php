@@ -2,37 +2,36 @@
 
 @section('title', 'Travel Blog')
 
-
 @section('content')
         <div class="gallery mr35">
 
-        @foreach($articles as $article)
-                <div class="card" style="background: url(../images/small/{{ $article->picture }}), center, no-repeat; background-size: cover;">
+        @for($i = 0; $i < 8; $i++)
+                <div class="card" style="background: url(../images/small/{{ $articles[$i]->picture }}), center, no-repeat; background-size: cover;">
                     <div class="card-header">
                         <div class="card-header__title">
-                            <h6>{{ $article->title }}</h6>
-                            <p>{{ $article->picture_title }}</p>
+                            <h6>{{ $articles[$i]->title }}</h6>
+                            <p>{{ $articles[$i]->picture_title }}</p>
                         </div>
                         <div class="card-header__date">
-                            <p>{{ strtoupper(substr(date("F",strtotime($article->created_at)),0, 3)) }}</p>
-                            <p>{{ date("d",strtotime($article->created_at)) }}th</p>
+                            <p>{{ strtoupper(substr(date("F",strtotime($articles[$i]->created_at)),0, 3)) }}</p>
+                            <p>{{ date("d",strtotime($articles[$i]->created_at)) }}th</p>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href='/posts/{{ $article->id }}'>
+                        <a href='/posts/{{ $articles[$i]->id }}'>
                             <div class="card-footer__social">
-                                <span><i class="fas fa-heart"></i></span><span>{{ $article->likes->count() }}</span>
-                                <span><i class="fas fa-comments"></i></span><span>{{ $article->comments->count() }}</span>
+                                <span><i class="fas fa-heart"></i></span><span>{{ $articles[$i]->likes->count() }}</span>
+                                <span><i class="fas fa-comments"></i></span><span>{{ $articles[$i]->comments->count() }}</span>
                             </div>
                         </a>
                         <div class="card-footer__openimg">
-                            <a href="storage/images/{{ $article->picture }}" data-lightbox="images" data-title="Title text text">
+                            <a href="storage/images/{{ $articles[$i]->picture }}" data-lightbox="images" data-title="Title text text">
                                 <i class="fas fa-expand-arrows-alt"></i>
                             </a>
                         </div>
                     </div>
                 </div>
-        @endforeach
+        @endfor
 
         </div>
 
@@ -111,7 +110,7 @@
 					<ul>
 					@foreach ($dates as $month => $count)
 						<li>
-							<a href="">
+							<a href="/posts/archive/{{ $month }}">
 								<span class="side__arrow">&rtrif;</span> {{ $month }}   (<span class="category__count"> {{ $count }} </span>)
 							</a>
 						</li>
@@ -122,32 +121,38 @@
         </main>
 		
 		<div class="main-bottom mr35">
-			<form class="contact-form">
+			<form class="contact-form" method="post" action="/newcontact">
+            @csrf
                 <h3 class="inner-title">Contact Me</h3>
                 <p>Mom hammer creepy me gusta morbi eat le friend steve jobs cellphone clinton cereal guy. </p>
                 <input class="input-text" type="text" name="name" placeholder="Your Name">
-                <label for="name">*requered</label>
+                <label for="name" class="hide">*requered</label>
                 <br>
                 <input class="input-text" type="email" name="email" placeholder="Your E-Mail Address">
-                <label for="email">*please enter a valid address</label>
+                <label for="email" class="hide">*please enter a valid address</label>
                 <br>
                 <textarea class="input-text input-text_aria" type="textaria" name="message" placeholder="Your Message"></textarea>
                 <br>
                 <input class="btn btn_submit" type="submit" value="SEND E-MAIL">
             </form>
 			<div class="main-bottom-right">
-				<div class="random-post">
-                    <h3 class="inner-title">Random Post</h3>
-                    <div class="random-post-img"></div>
-                    <p>Some advise on Photography</p>
-                </div>
+                <a href="/posts/{{$random1->id}}">
+                    <div class="random-post">
+                        <h3 class="inner-title">{{ $random1->title }}</h3>
+                        <div class="random-post-img" style="background: url(../images/small/{{ $random1->picture }}), center, no-repeat; background-size: cover;"></div>
+                        <p>{{ $random1->picture_title }}</p>
+                    </div>
+                </a>
+                <a href="/posts/{{$random2->id}}">
                 <div class="random-post">
-                    <h3 class="inner-title">Random Post</h3>
-                    <div class="random-post-img"></div>
-                    <p>Some advise on Photography</p>
+                    <h3 class="inner-title">{{ $random2->title }}</h3>
+                    <div class="random-post-img" style="background: url(../images/small/{{ $random2->picture }}), center, no-repeat; background-size: cover;"></div>
+                    <p>{{ $random1->picture_title }}</p>
                 </div>
-				<form class="sub-form">
-                    <h2 class="title">BLACK & WHITE</h2>
+                </a>
+				<form class="sub-form" method="post" action="/newsub">
+                @csrf
+                    <h2 class="title">TRAVEL BLOG</h2>
                     <h3 class="inner-title">Newsletter</h3>
                     <input class="input-text subs-email" type="email" name="subs-email" placeholder="Your E-Mail Address">
                     <input class="btn btn_submit" type="submit" value="SUBSCRIBE">

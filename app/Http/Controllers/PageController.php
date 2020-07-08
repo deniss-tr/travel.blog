@@ -4,25 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use App\Contact;
 use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
 {
     public function index()
 	{
-		$articles = Article::orderBy('created_at', 'desc')->paginate(8);
-		$categorys = DB::table('articles')->pluck('category');
-		$categorys = array_count_values($categorys->toArray());
-		
-		$dates = DB::table('articles')
-			->pluck('created_at')
-			->map(function($item) {
-				return date("F",strtotime($item));
+		$articles = Article::orderBy('created_at', 'desc')->get();
+		$catArr = $articles->map(function ($article) {
+			return $article->category;
+		})->toArray();
+
+		$categorys = array_count_values($catArr);		
+		$dates = $articles->map(function($item) {
+				return date("F",strtotime($item->created_at));
 			});	
 		$dates = array_count_values($dates->toArray());
-		//https://stackoverflow.com/questions/45138724/how-to-extract-month-day-from-created-at-column-in-laravel
 		
-		return view('index', compact('articles', 'categorys', 'dates'));
+		$random1 = $articles->random();
+		$random2 = $articles->random(); 
+		
+		return view('index', compact('articles', 'categorys', 'dates', 'random1', 'random2'));
 	}
 	
 	public function gallery()
@@ -43,5 +46,35 @@ class PageController extends Controller
 	public function signup()
 	{
 		return view('signup');
+	}
+
+	public function newContact(Request $req)
+	{
+		$validation = $req->validate([
+			'name' => 'required|max:50',
+			'email' => 'required',
+			'message' => 'max:10000',
+		]);
+		$contacts = new Contact();
+		$contacts->name = $req->input('name');
+		$contacts->email = $req->input('email');
+		$contacts->message = $req->input('message');
+		$contacts->form = 'contactme';
+		$contacts->save();
+
+		return redirect('/');
+	}
+	public function newSub(Request $req)
+	{
+		$validation = $req->validate([
+			'subs-email' => 'required',
+		]);
+		$c = new Contact();
+		$c->name = 'guest';
+		$c->email = $req->input('subs-email');
+		$c->form = 'newsletter';
+		$c->save();
+
+		return redirect('/');
 	}
 }

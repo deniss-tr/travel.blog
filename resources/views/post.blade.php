@@ -23,6 +23,7 @@
 							<input class="user_id" type="hidden" name="user_id" value="{{ $userId }}" />
 							<i class="fas fa-heart fa-lg"></i>
 							<span class="likes-count">Likes count: <span class="likes-count-number">{{$likesCount}}</span></span>
+						</h3>
 						@else
 							<span class="likes-count"> <i class="fas fa-heart fa-lg"></i> Likes count: <span class="likes-count-number">{{$likesCount}}</span></span>
 						</h3>
