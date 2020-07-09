@@ -2,9 +2,10 @@
 
 @section('title', 'Travel Blog')
 
+
 @section('content')
         <div class="gallery mr35">
-        @for($i = 0; $i < 6; $i++)
+        @for($i = 0; $i < 8; $i++)
                 <div class="card" style="background: url(../images/small/{{ $articles[$i]->picture }}), center, no-repeat; background-size: cover;">
                     <div class="card-header">
                         <div class="card-header__title">

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Travel Blog post')
-@section('sub-css', "../css/posts.css")
+@section('sub-css', asset("css/posts.css"))
 
 
 @section('content')
@@ -12,6 +12,10 @@
 				<button class="close-btn" onclick="document.querySelector('.del-form').style.display='none'">
 					<i class="fas fa-times fa-3x"></i>
 				</button>
+				<form class="form-del-post">
+					<h4>Are you sure you want to delete this post?</h4>
+					<input class="btn" type="submit" value="DELETE">
+				</form>
 			</div>
 				<div class="article">
 					<div class="article-header">

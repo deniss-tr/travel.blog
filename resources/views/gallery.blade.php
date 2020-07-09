@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Travel Blog gallery')
-@section('sub-css', "css/gallery.css")
+@section('sub-css', asset("css/gallery.css"))
 
 
 @section('content')
