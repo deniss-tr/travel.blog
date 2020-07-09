@@ -122,4 +122,68 @@ class ArticleController extends Controller
 		
 		return response()->json(true);
 	}
+	public function myPosts()
+	{
+		if(auth()->check()) {
+			$userId = auth()->user()->id;
+			
+			$articles = Article::orderBy('created_at', 'desc')
+			->where('user_id', '=', $userId)
+			->paginate($this->postsByPage);	
+			return view('posts', compact('articles'));
+			
+		} else {
+			return redirect()->back();
+		}
+	}
+	public function edit($id)
+	{
+		$article = Article::findOrFail($id);
+		if($article->user_id != auth()->user()->id) {
+			return redirect('/');
+		}
+		return view('editpost', compact('article'));
+	}
+	
+	public function postUpdate(Request $request, $id)
+	{
+		$article = Article::findOrFail($id);
+		
+		
+		$data = $request->validate([
+			'title' => 'required|max:50',
+			'article' => 'required|min:5|max:5000',
+		]);
+
+		$article->title = $request->input('title');
+		$article->category = $request->input('category');
+		$article->body = $request->input('article');
+		$article->picture_title = $request->input('img-title');
+		
+		if($file = $request->file('imgLoad')) {
+			$request->imgLoad->store('public/images');
+			$imgName = $request->imgLoad->hashName();
+
+			$img = Image::make($file)
+				->resize(600, null, function ($constraint) {
+					$constraint->aspectRatio();
+				})
+				->save("images/small/{$imgName}");
+			$article->picture = $imgName ;
+		}
+
+		
+		$article->save();
+		
+		return redirect('/myposts');
+	}
+	public function destroy($id)
+{
+
+    $article = Article::find($id);
+    if ($article) {
+      $article->delete();
+    }
+    return redirect('/');
+}
 }

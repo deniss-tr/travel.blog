@@ -17,25 +17,31 @@
         <nav class="nav-top">
             <ul>
 				@if( auth()->check() )
-					<li><a href="/posts/new"><strong>New post</strong></a></li>
+					<li><a class="nav-top-list-item" href="/posts/new"><strong>New post</strong></a></li>
 				@endif
-                <li><a href="/posts">Posts</a></li>
-                <li><a href="/gallery">Gallery</a></li>
+                <li><a class="nav-top-list-item" href="/posts">Posts</a></li>
+                <li><a class="nav-top-list-item" href="/gallery">Gallery</a></li>
 				@if( !auth()->check() )
-					<li><a href="/login">Sign in</a></li>
-					<li><a href="/register">Sign up</a></li>
+					<li><a class="nav-top-list-item" href="/login">Sign in</a></li>
+					<li><a class="nav-top-list-item" href="/register">Sign up</a></li>
 				@else
+
 					<li>
-					<a class="dropdown-item" href="{{ route('logout') }}"
-					   onclick="event.preventDefault();
-									 document.getElementById('logout-form').submit();">
-						{{ __('Logout') }}
-					</a>
+						<button class="dropdown-btn">( {{ auth()->user()->name }} )</button>
+						  <div class="dropdown-container hide">
+							<div class="dropdown-item"><a href="/myposts">My posts</a></div>
+							<div class="dropdown-item">
+								<a href="{{ route('logout') }}"
+								   onclick="event.preventDefault();
+												 document.getElementById('logout-form').submit();">
+									{{ __('Logout') }}
+								</a>
+								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+									@csrf
+								</form>								
+							</div>
+						  </div>
 					</li>
-					<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-						@csrf
-					</form>
-					<li><a href="#">( {{ auth()->user()->name }} )</a></li>
 				@endif
             </ul>
         </nav>
@@ -47,11 +53,27 @@
     <div class="header-inner hide">
     <nav class="nav-inner">
         <ul>
-            <li><a href="/posts/new"><strong>New post</strong></a></li>
+			@if( auth()->check() )
+			<li><a href="/posts/new"><strong>New post</strong></a></li>
+			<li><a href="/myposts">My posts</a></li>	
+			@endif
             <li><a href="/posts">Posts</a></li>
             <li><a href="/gallery">Gallery</a></li>
+			@if( auth()->check() )
+			<li>
+				<a href="{{ route('logout') }}"
+				   onclick="event.preventDefault();
+								 document.getElementById('logout-form').submit();">
+					{{ __('Logout') }}
+				</a>
+				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+					@csrf
+				</form>			
+			</li>
+			@else
             <li><a href="/login">Sign in</a></li>
             <li><a href="/register">Sign up</a></li>
+			@endif
         </ul>
     </nav>
     </div>

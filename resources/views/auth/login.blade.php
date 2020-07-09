@@ -22,12 +22,7 @@
 							<strong>{{ $message }}</strong>
 						</span>
 					@enderror
-					<div class="form-check">
-						<input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-						<label class="form-check-label" for="remember">
-							{{ __('Remember Me') }}
-						</label>
-					</div>
+
 					<input class="btn btn_submit" type="submit" value="Login">
 					<a href="">Forgot your password?</a>
 				</form>

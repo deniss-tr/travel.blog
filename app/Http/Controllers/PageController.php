@@ -16,7 +16,7 @@ class PageController extends Controller
 			return $article->category;
 		})->toArray();
 
-		$categorys = array_count_values($catArr);		
+		$categorys = array_count_values($catArr);
 		$dates = $articles->map(function($item) {
 				return date("F",strtotime($item->created_at));
 			});	

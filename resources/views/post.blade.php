@@ -8,11 +8,24 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
         <article>
 			<div class="article-wrapper">
-			
+			<div class="del-form">
+				<button class="close-btn" onclick="document.querySelector('.del-form').style.display='none'">
+					<i class="fas fa-times fa-3x"></i>
+				</button>
+			</div>
 				<div class="article">
 					<div class="article-header">
-						<p>{{$article->category}}</span></p>
-						<p class="article-date">{{$article->created_at}}</p>
+						<p><span>{{$article->category}}</span></p>
+						<p class="article-date">
+						@if(auth()->check() and auth()->user()->id == $article->user_id)
+						<span class="header-edit-post">
+							<a href="/posts/{{ $article->id }}/edit"><i class="fas fa-edit fa-lg"></i></a>
+							<button class='delBtn' onclick="document.querySelector('.del-form').style.display='block'">
+								<i class="fas fa-trash-alt fa-lg"></i>
+							</button>
+						</span>
+						@endif
+						{{$article->created_at}}</p>
 					</div>
 					<div class="article-header-inner">
 						<h3 class="article-header__title">{{$article->title}}
@@ -53,6 +66,7 @@
 									<li><i class="fab fa-facebook-f"></i></li>
 									<li><i class="fab fa-twitter"></i></li>
 									<li><i class="fab fa-instagram"></i></li>
+									
 								</ul>
 							</div>
 						</div>
@@ -65,8 +79,9 @@
 						<input class="add-comment-text input-text" type="text" name="body" placeholder="add comment">
 						<input type="hidden" name="article_id" value="{{ $article->id }}" />
 						<input class="btn add-comment__btn" type="submit" value="add">
-					</form>				
+					</form>						
 				</div>
+									
 				@endif
 				
 	@foreach ($article->comments as $comment)	

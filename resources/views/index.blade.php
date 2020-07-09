@@ -4,8 +4,7 @@
 
 @section('content')
         <div class="gallery mr35">
-
-        @for($i = 0; $i < 8; $i++)
+        @for($i = 0; $i < 6; $i++)
                 <div class="card" style="background: url(../images/small/{{ $articles[$i]->picture }}), center, no-repeat; background-size: cover;">
                     <div class="card-header">
                         <div class="card-header__title">
@@ -37,9 +36,12 @@
 
         <div class="about-me mr35">
             <div class="about-me__content">
-                <h3 class="title">A Picture Is Worth A Thousand Words</h3>
-                <p>People peter griffin high school mom bra just avenger le me students friend- zoned challenge accepted. True Story face troll finals derpina cereal guy lose back final week yao male. Not bad luke feel like a sir bacon pizza coffee a the avengers puking rainbows nyan cat search.</p>
-                <a class="btn" href="">Learn More About Us</a>
+                <h3 class="title">My training project</h3>
+                <p>This is my final training project "Travel blog" based on laravel framework. 
+				I'm still working on it, gradually develop new features and fix bugs.
+				Also it is real working blog website, where you can register and  post articles about your travels.
+				Below is link to my github repository.</p>
+                <a class="btn" href="https://github.com/deniss-tr">Learn More</a>
             </div>
 		</div>
 
@@ -124,7 +126,7 @@
 			<form class="contact-form" method="post" action="/newcontact">
             @csrf
                 <h3 class="inner-title">Contact Me</h3>
-                <p>Mom hammer creepy me gusta morbi eat le friend steve jobs cellphone clinton cereal guy. </p>
+                <p>You can fill this form, or you can contact me via email <a href = "mailto: tarasevicsd@gmail.com">tarasevicsd@gmail.com</a></p>
                 <input class="input-text" type="text" name="name" placeholder="Your Name">
                 <label for="name" class="hide">*requered</label>
                 <br>

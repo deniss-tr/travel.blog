@@ -49,7 +49,6 @@ heartBtn.forEach(heart => {
 		let userId = parentN.querySelector('.user_id').value;
 		let likesCount = parentN.querySelector('.likes-count-number');
 		console.log(likesCount);
-	//	console.log(userId);
 		if(!heart.classList.contains('like')){
 			fetch(`/likes`, {
 			method: 'POST',
@@ -78,6 +77,21 @@ heartBtn.forEach(heart => {
 		  .then(result => result.json())
 		  .then(heart.classList.remove('like'))
 		  .then(likesCount.textContent = Number(likesCount.textContent) - 1);		  
+		}
+	});
+});
+
+//////////// DROPDOWN MENU
+const dropdownBtns = document.querySelectorAll('.dropdown-btn');
+
+dropdownBtns.forEach(btn => {
+	btn.addEventListener("click", function() {
+		this.classList.toggle("active");
+		let dropdownContent = this.nextElementSibling;
+		if (dropdownContent.classList.contains("hide")) {
+		  dropdownContent.classList.remove("hide");
+		} else {
+		  dropdownContent.classList.add("hide");
 		}
 	});
 });
