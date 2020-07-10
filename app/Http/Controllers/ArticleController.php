@@ -178,12 +178,12 @@ class ArticleController extends Controller
 		return redirect('/myposts');
 	}
 	public function destroy($id)
-{
+	{
 
-    $article = Article::find($id);
-    if ($article) {
-      $article->delete();
-    }
-    return redirect('/');
-}
+		$article = Article::find($id);
+		if ($article) {
+		  $article->delete();
+		}
+		return redirect('/myposts');
+	}
 }

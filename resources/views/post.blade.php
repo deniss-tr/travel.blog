@@ -12,7 +12,9 @@
 				<button class="close-btn" onclick="document.querySelector('.del-form').style.display='none'">
 					<i class="fas fa-times fa-3x"></i>
 				</button>
-				<form class="form-del-post">
+				<form class="form-del-post" method="post" action="/posts/{{ $article->id }}">
+				@method('delete')
+				@csrf
 					<h4>Are you sure you want to delete this post?</h4>
 					<input class="btn" type="submit" value="DELETE">
 				</form>

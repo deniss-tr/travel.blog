@@ -30,11 +30,9 @@ class PageController extends Controller
 	
 	public function gallery()
 	{
-		$pictures = DB::table('articles')
-			->orderBy('created_at', 'desc')
-			->pluck('picture', 'picture_title')
-			->take(9);
-		return view('gallery', compact('pictures'));
+			
+		$articles = Article::orderBy('created_at', 'desc')->paginate(9);
+		return view('gallery', compact('articles'));
 	}
 	
 	

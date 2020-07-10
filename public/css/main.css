@@ -857,14 +857,7 @@ footer {
     align-items: center;
     justify-content: center;
 }
-.page-item {
-    list-style-type: none;
-    display: inline-block;
-}
-.page-link {
-    margin: 0 10px;
 
-}
 .article-wrapper_hov:hover {
 	box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
@@ -885,6 +878,32 @@ footer {
 .active {
 	color: #616161;
 }
+
+.page-item {
+	list-style-type: none;
+	display: inline-block;
+	margin: 0 2px;
+}
+.page-link {
+	display: flex;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+	color: #fff;
+	width: 30px;
+	height: 30px;
+	background: black;
+	font-size: 18px;
+	left: 1;
+}
+.active .page-link{
+	background: #6e6e6e;
+}
+
+
+
+
+
 .hide {
     display: none;
 }
