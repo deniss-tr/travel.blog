@@ -25,7 +25,7 @@
                             </div>
                         </a>
                         <div class="card-footer__openimg">
-                            <a href="storage/images/{{ $articles[$i]->picture }}" data-lightbox="images" data-title="Title text text">
+                            <a href="storage/images/{{ $articles[$i]->picture }}" data-lightbox="images" data-title="{{$articles[$i]->picture_title}}">
                                 <i class="fas fa-expand-arrows-alt"></i>
                             </a>
                         </div>
@@ -40,8 +40,8 @@
                 <h3 class="title">My training project</h3>
                 <p>This is my final training project "Travel blog" based on laravel framework. 
 				I'm still working on it, gradually develop new features and fix bugs.
-				Also it is real working blog website, where you can register and  post articles about your travels.
-				Below is link to my github repository.</p>
+				Also it is real working blog website, where you can register and post articles about your travels.
+				There is a link below to my github repository.</p>
                 <a class="btn" href="https://github.com/deniss-tr">Learn More</a>
             </div>
 		</div>
@@ -136,7 +136,7 @@
                 <br>
                 <textarea class="input-text input-text_aria" type="textaria" name="message" placeholder="Your Message"></textarea>
                 <br>
-                <input class="btn btn_submit" type="submit" value="SEND E-MAIL">
+                <input class="btn btn_submit send-email" type="submit" value="SEND E-MAIL">
             </form>
 			<div class="main-bottom-right">
                 <a href="/posts/{{$random1->id}}">
@@ -150,7 +150,7 @@
                 <div class="random-post">
                     <h3 class="inner-title">{{ $random2->title }}</h3>
                     <div class="random-post-img" style="background: url(../images/small/{{ $random2->picture }}), center, no-repeat; background-size: cover;"></div>
-                    <p>{{ $random1->picture_title }}</p>
+                    <p>{{ $random2->picture_title }}</p>
                 </div>
                 </a>
 				<form class="sub-form" method="post" action="/newsub">

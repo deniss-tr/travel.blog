@@ -167,7 +167,7 @@ header {
   font-size: 22px;
   border: none;
   background: none;
-  width:100%;
+
   cursor: pointer;
   outline: none;
   font-weight: 600;
@@ -203,7 +203,7 @@ header {
     display: none;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+
     height: 62px;
     background: #0d0d0d;
     color: #fff;
@@ -271,7 +271,7 @@ header {
     font-size: 18px;
     letter-spacing: 0.9px;
     line-height: 1.7;
-    
+    padding: 0 10px;
 }
 /* ---------------- MAIN ------------------- */
 
@@ -282,12 +282,10 @@ main {
 /* ---------------- article ------------------- */
 article {
     max-width: 866px;
-    width: 100%;
-    margin-right: 10px;
+    margin-right: 35px;
 
 }
 .article {
-    width: 100%;
     margin-bottom: 30px;
     background: #fff;
 }
@@ -315,12 +313,11 @@ article {
 	object-fit: cover;
 }
 .article-img__title {
-    padding: 17px 0;
+    padding: 17px 0 55px 0;
 	color: #6C6E72;
 	font-size: 14px;
 }
 .article__text {
-    max-width: 420px;
     letter-spacing: 0.9px;
     line-height: 1.7;
     margin: 0 10px;
@@ -363,6 +360,7 @@ article {
 
 /* ---------------- aside ------------------- */
 
+
 .side {
     width: 265px;
     height: 429px;
@@ -394,22 +392,22 @@ article {
 
 .main-bottom {
 	display: flex;
-	justify-content: space-between;
 	
 }
 .contact-form, .random-post, .sub-form {
 	background: #fff;
 }
 .contact-form {
-	width: 565px;
+	Flex-basis: 565px;
 	height: 657px;
     padding: 0 32px;
+    margin-right: 35px;
 }
 .main-bottom-right {
 	display: flex;
-	max-width: 565px;
     flex-wrap: wrap;
     justify-content: space-between;
+    Flex-basis: 565px;
 }
 .random-post {
 	width: 265px;
@@ -417,7 +415,8 @@ article {
 
 }
 .sub-form {
-	width: 565px;
+    display: flex;
+    width: 100%;
 	height: 305px;
     margin-top: 30px;
 }
@@ -537,7 +536,7 @@ article {
     border: solid 1px #d6d6d6;
 }
 .form-text {
-    width: 100%;
+
     padding-right: 20px;
 }
 .new-post-input {
@@ -545,7 +544,7 @@ article {
     margin-bottom: 20px;
 }
 .new-post-textaria {  
-    width: 100%;
+
     min-height: 300px;
 }
 .loadBtn {
@@ -578,7 +577,7 @@ article {
     font-size: 16px;
 }
 .input-text-aria-style {
-    width: 100%;
+
     resize: none;
     padding-top: 22px;
     padding-right: 22px;
@@ -667,19 +666,21 @@ footer {
 	}
 	article {
 		margin-right: 0;
-		width: 97vw;
-	}
+		width: 100%;
+    }
+    main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 @media (max-width: 800px) {
 	.article-content {
 		flex-direction: column;
 	}
-	.article {
-		max-height: 100%;
-	}
 
 	.article__text {
-		max-width: 100%;
+
 		margin: 10px 0 0 0;
 		max-height: 240px;
 		overflow: hidden;
@@ -690,7 +691,7 @@ footer {
 		align-items: center;
 		justify-content: flex-end;
 		margin-top: 0;
-		max-width: 100%;	
+        max-width: 100%;
 	}
 	.author__name {
 		margin: 0 10px 10px 0;
@@ -743,32 +744,23 @@ footer {
     }
     .contact-form {
         margin-bottom: 30px;
-        width: 100%;    
+        margin-right: 0px;
     }
 	
-    .contact-form label {
-        display: block;
-
-    }
 	
     .sub-form {
         margin-top: 0;
-        width: 100%;
+
         height: 657px;
         margin: 0 0 30px 20px;
     }
     .main-bottom-right {
-        width: 100%;
+
     }
     .subs-email {
         width: 250px;
     }
-    .contact-form .input-text_aria {
-        width: 270px;
-    }
-    .contact-form .input-text {
-        margin-bottom: 0;
-    }
+
     .contact-form label{
         margin: 0;
     }
@@ -791,7 +783,10 @@ footer {
     }
     .main-bottom-right {
         max-width: 700px;
-
+        Flex-basis: 0;
+    }
+    .send-email {
+        margin-bottom: 30px;
     }
 }
 @media (max-width: 600px) {
@@ -811,9 +806,7 @@ footer {
     .gallery {
         padding: 0;
     }
-    .btn {
-        margin: 10px 0;
-    }
+
     .about-me {
         height: 440px;
     }
@@ -901,8 +894,46 @@ footer {
 }
 
 
+article{
+    max-width: 100%;
+    margin-bottom: 30px;
+
+}
+.article-wrapper {
+	position: relative;
+}
+.article {
+    width: 100%;
+    margin-bottom: 30px;
+}
 
 
+@media (max-width: 800px) {
+    .article {
+        height: 100%;
+    }
+    .article-header {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .article-header-inner {
+        padding-bottom: 10px;
+    }
+    .article__text p {
+        padding-bottom: 0;
+    }
+    .article-img__title {
+        padding-bottom: 10px;
+    }
+	.add-comment-form {
+		margin-left: 20px;
+	}
+
+}
+
+body {
+    min-width: 320px;
+}
 
 .hide {
     display: none;

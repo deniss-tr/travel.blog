@@ -69,9 +69,9 @@
 							<div class="author-avatar"></div>
 							<div class="article-author__soc">
 								<ul>
-									<li><i class="fab fa-facebook-f"></i></li>
-									<li><i class="fab fa-twitter"></i></li>
-									<li><i class="fab fa-instagram"></i></li>
+									<li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+									<li><a href=""><i class="fab fa-twitter"></i></a></li>
+									<li><a href=""><i class="fab fa-instagram"></i></a></li>
 									
 								</ul>
 							</div>
