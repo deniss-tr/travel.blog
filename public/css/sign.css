@@ -2,13 +2,18 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	height: 100vh;
+	position: relative;
+
 }
 header {
 	margin-bottom: 100px;
 }
 footer {
 	margin-top: 100px;
+	position: absolute;
+	bottom: -140px;
+	left: 0;
+	width: 100%;
 }
 .sign-container {
 	height: 100%;	
@@ -24,6 +29,7 @@ footer {
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
+	margin-bottom: 50px;
 }
 .sign-form-title {
 	margin: 20px;
@@ -43,4 +49,13 @@ footer {
 }
 .sign-form a {
 	margin: 0 0 10px 0;
+}
+
+@media (min-height: 820px) {
+	.wrapper {
+		height: 90vh;
+	}
+	footer {
+		bottom: -95px;
+	}
 }
